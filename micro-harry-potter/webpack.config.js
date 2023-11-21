@@ -1,15 +1,64 @@
-const { merge } = require("webpack-merge");
-const singleSpaDefaults = require("webpack-config-single-spa-react-ts");
+const HtmlWebPackPlugin = require("html-webpack-plugin");
+const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 
-module.exports = (webpackConfigEnv, argv) => {
-  const defaultConfig = singleSpaDefaults({
-    orgName: "n5now-frontend-challenge",
-    projectName: "micro-harry-potter",
-    webpackConfigEnv,
-    argv,
-  });
+const deps = require("./package.json").dependencies;
+module.exports = (_, argv) => ({
+  output: {
+    publicPath: "http://localhost:8081/",
+  },
 
-  return merge(defaultConfig, {
-    // modify the webpack config however you'd like to by adding to this object
-  });
-};
+  resolve: {
+    extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
+  },
+
+  devServer: {
+    port: 8081,
+    historyApiFallback: true,
+  },
+
+  module: {
+    rules: [
+      {
+        test: /\.m?js/,
+        type: "javascript/auto",
+        resolve: {
+          fullySpecified: false,
+        },
+      },
+      {
+        test: /\.(css|s[ac]ss)$/i,
+        use: ["style-loader", "css-loader", "postcss-loader"],
+      },
+      {
+        test: /\.(ts|tsx|js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+        },
+      },
+    ],
+  },
+
+  plugins: [
+    new ModuleFederationPlugin({
+      name: "micro_harry_potter",
+      filename: "remoteEntry.js",
+      remotes: {},
+      exposes: {},
+      shared: {
+        ...deps,
+        react: {
+          singleton: true,
+          requiredVersion: deps.react,
+        },
+        "react-dom": {
+          singleton: true,
+          requiredVersion: deps["react-dom"],
+        },
+      },
+    }),
+    new HtmlWebPackPlugin({
+      template: "./src/index.html",
+    }),
+  ],
+});
