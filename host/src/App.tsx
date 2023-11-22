@@ -1,7 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import styled, { createGlobalStyle } from "styled-components";
-import Navbar from "./components/Navbar";
+import Footer from "./components/Footer/Footer";
+import Navbar from "./components/Navbar/Navbar";
+import ShowSwitcher from "./components/ShowSwitcher/ShowSwitcher";
+import List from "micro_rick_morty/List";
+import List2 from "micro_harry_potter/List2";
 
 // Global styles for dark mode
 const GlobalStyle = createGlobalStyle`
@@ -23,7 +27,9 @@ const App = () => (
   <StyledApp>
     <GlobalStyle />
     <Navbar />
-    {/* Add other components or content */}
+    <Footer />
+    <List />
+    <List2 />
   </StyledApp>
 );
 
