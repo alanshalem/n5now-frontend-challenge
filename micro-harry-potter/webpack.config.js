@@ -45,7 +45,7 @@ module.exports = (_, argv) => ({
       filename: "remoteEntry.js",
       remotes: {},
       exposes: {'./ListHP': './src/components/List/List.tsx',
-      './src/hooks/useSwitchAppCLanguage': './src/hooks/useSwitchLanguage.ts',
+      './hooks/useSwitchAppHPLanguage': './src/hooks/useSwitchLanguage',
     },      
       shared: {
         ...deps,

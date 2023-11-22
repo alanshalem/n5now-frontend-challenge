@@ -1,7 +1,7 @@
-import appCInstance from '../i18n';
+import appHPInstance from '../i18n';
 
 const useSwitchLanguage = () => {
-  return (languageId: string) => appCInstance.changeLanguage(languageId);
+  return (languageId: string) => appHPInstance.changeLanguage(languageId);
 };
 
 export default useSwitchLanguage;

@@ -4,6 +4,7 @@ export default {
     rickAndMorty: 'Rick y Morty 📺',
     harryPotter: 'Harry Potter ✨',
     option: 'Selecciona una opción',
+    title: 'Desafio Frontend',
     footer: 'Hecho con ❤️ desde 🇦🇷'
   };
   

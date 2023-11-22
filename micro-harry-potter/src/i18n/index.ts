@@ -8,9 +8,9 @@ const resources = {
   es: { translation: esJSON },
 };
 
-const appCInstance = i18n.createInstance();
+const appHPInstance = i18n.createInstance();
 
-appCInstance.use(initReactI18next).init({
+appHPInstance.use(initReactI18next).init({
   resources,
   keySeparator: false,
   lng: 'en',
@@ -23,4 +23,4 @@ appCInstance.use(initReactI18next).init({
   },
 });
 
-export default appCInstance;
+export default appHPInstance;

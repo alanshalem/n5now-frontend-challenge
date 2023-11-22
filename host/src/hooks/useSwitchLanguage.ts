@@ -1,35 +1,35 @@
-import useSwitchAppBLanguage from 'micro_rick_morty/src/hooks/useSwitchAppBLanguage';
-import useSwitchAppCLanguage from 'micro_harry_potter/src/hooks/useSwitchAppCLanguage';
+import useSwitchAppRMLanguage from 'micro_rick_morty/hooks/useSwitchAppRMLanguage';
+import useSwitchAppHPLanguage from 'micro_harry_potter/hooks/useSwitchAppHPLanguage';
 
 import appInstance from '../i18n';
 
 const useSwitchLanguage = () => {
-  const switchAppBLanguageHook = useSwitchAppBLanguage();
-  const switchAppCLanguageHook = useSwitchAppCLanguage();
+  const switchAppRMLanguageHook = useSwitchAppRMLanguage();
+  const switchAppHPLanguageHook = useSwitchAppHPLanguage();
 
   // Host
   const switchAppHostLanguage = (languageCode: string) =>
     appInstance.changeLanguage(languageCode);
 
   // Rick and morty
-  const switchAppBLanguage = (languageCode: string) =>
-    switchAppBLanguageHook(languageCode);
+  const switchAppRMLanguage = (languageCode: string) =>
+    switchAppRMLanguageHook(languageCode);
 
   // Harry Potter
-  const switchAppCLanguage = (languageCode: string) =>
-    switchAppCLanguageHook(languageCode);
+  const switchAppHPLanguage = (languageCode: string) =>
+    switchAppHPLanguageHook(languageCode);
 
   // All apps
   const switchAllLanguages = (languageCode: string) => {
     switchAppHostLanguage(languageCode);
-    switchAppBLanguage(languageCode);
-    switchAppCLanguage(languageCode);
+    switchAppRMLanguage(languageCode);
+    switchAppHPLanguage(languageCode);
   };
 
   return {
     switchAppHostLanguage,
-    switchAppBLanguage,
-    switchAppCLanguage,
+    switchAppRMLanguage,
+    switchAppHPLanguage,
     switchAllLanguages,
   };
 };

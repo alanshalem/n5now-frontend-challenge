@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
+import AppHPI18nWrapper from "../../context/LanguageContext";
 
 const Loading = styled.div`
   font-size: 24px;
@@ -31,8 +33,8 @@ const CardImage = styled.img`
 
 const ListHP = () => {
   const [harryPotterData, setHarryPotterData] = useState([]);
-  const [rickAndMortyData, setRickAndMortyData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,12 +42,7 @@ const ListHP = () => {
         const harryPotterResponse = await axios.get(
           "https://hp-api.onrender.com/api/characters"
         );
-        const rickAndMortyResponse = await axios.get(
-          "https://rickandmortyapi.com/api/character"
-        );
-
         setHarryPotterData(harryPotterResponse.data);
-        setRickAndMortyData(rickAndMortyResponse.data.results);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -57,21 +54,27 @@ const ListHP = () => {
   }, []);
 
   return (
-    <>
-      {loading && <Loading>Loading...</Loading>}
+    <AppHPI18nWrapper>
+      {loading && <Loading>{t("loading")}</Loading>}
       {!loading && (
         <CardGrid>
           {harryPotterData.map((character: any) => (
             <Card key={character.id}>
               <CardImage src={character.image} alt={character.name} />
-              <h2>{character.name}</h2>
-              <p>{character.species}</p>
-              <p>{character.house}</p>
+              <h2>
+                {t("name")}: {character.name}
+              </h2>
+              <p>
+                {t("specie")}: {character.species}
+              </p>
+              <p>
+                {t("house")}: {character.house}
+              </p>
             </Card>
           ))}
         </CardGrid>
       )}
-    </>
+    </AppHPI18nWrapper>
   );
 };
 

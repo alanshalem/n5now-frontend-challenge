@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
+import AppRMI18nWrapper from "../../context/LanguageContext";
 
 const Loading = styled.div`
   font-size: 24px;
@@ -33,6 +35,7 @@ const Card = styled.div`
 const ListRM = () => {
   const [rickAndMortyData, setRickAndMortyData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -52,25 +55,27 @@ const ListRM = () => {
   }, []);
 
   return (
-    <>
-      {loading && <Loading>Loading...</Loading>}
+    <AppRMI18nWrapper>
+      {loading && <Loading>{t("loading")}</Loading>}
       {!loading && (
         <CardGrid>
           {rickAndMortyData.map((character: any) => (
             <Card key={character.id}>
               <CardImage src={character.image} alt={character.name} />
-              <h2>{character.name}</h2>
+              <h2>
+                {t("name")}: {character.name}
+              </h2>
               <p>
-                <strong>Species:</strong> {character.species}
+                {t("specie")}: {character.species}
               </p>
               <p>
-                <strong>House:</strong> {character.house}
+                {t("status")}: {character.status}
               </p>
             </Card>
           ))}
         </CardGrid>
       )}
-    </>
+    </AppRMI18nWrapper>
   );
 };
 

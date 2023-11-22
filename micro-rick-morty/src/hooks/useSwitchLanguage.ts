@@ -1,7 +1,7 @@
-import appBInstance from '../i18n';
+import appRMInstance from '../i18n';
 
 const useSwitchLanguage = () => {
-  return (languageId: string) => appBInstance.changeLanguage(languageId);
+  return (languageId: string) => appRMInstance.changeLanguage(languageId);
 };
 
 export default useSwitchLanguage;

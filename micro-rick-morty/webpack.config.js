@@ -45,7 +45,7 @@ module.exports = (_, argv) => ({
       filename: "remoteEntry.js",
       remotes: {},
       exposes: {'./ListRM': './src/components/List/List.tsx',
-      './src/hooks/useSwitchAppBLanguage': './src/hooks/useSwitchLanguage.ts',
+      './hooks/useSwitchAppRMLanguage': './src/hooks/useSwitchLanguage',
     },
       shared: {
         ...deps,

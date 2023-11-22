@@ -8,9 +8,9 @@ const resources = {
   es: { translation: esJSON },
 };
 
-const appBInstance = i18n.createInstance();
+const appRMInstance = i18n.createInstance();
 
-appBInstance.use(initReactI18next).init({
+appRMInstance.use(initReactI18next).init({
   resources,
   keySeparator: false,
   lng: 'en',
@@ -23,4 +23,4 @@ appBInstance.use(initReactI18next).init({
   },
 });
 
-export default appBInstance;
+export default appRMInstance;

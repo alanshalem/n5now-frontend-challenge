@@ -12,7 +12,7 @@ const Navbar = (props: Props) => {
   return (
     <StyledNavbar>
       <Title>
-        <ImageButton imageUrl={n5icon} altText="Ingles" /> - Frontend Challenge
+        <ImageButton imageUrl={n5icon} altText="Ingles" /> - {t("title")}
       </Title>
       <LanguageSwitcher message="changeLanguage" />
     </StyledNavbar>
