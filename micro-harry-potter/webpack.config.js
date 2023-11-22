@@ -44,7 +44,7 @@ module.exports = (_, argv) => ({
       name: "micro_harry_potter",
       filename: "remoteEntry.js",
       remotes: {},
-      exposes: {'./List2': './src/components/List/List.tsx',
+      exposes: {'./ListHP': './src/components/List/List.tsx',
       './src/hooks/useSwitchAppCLanguage': './src/hooks/useSwitchLanguage.ts',
     },      
       shared: {

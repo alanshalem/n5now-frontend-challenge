@@ -10,8 +10,16 @@ const StyledNavbar = styled.nav`
 `;
 
 const Title = styled.div`
+  display: flex;
+  align-items: center; // Centra verticalmente
   font-size: 1.5rem;
   font-weight: bold;
 `;
 
-export { StyledNavbar, Title };
+const Image = styled.img`
+  width: 30px; // Ajusta el ancho según sea necesario
+  height: 30px; // Ajusta la altura según sea necesario
+  margin-right: 10px; // Ajusta el espacio entre la imagen y el texto según sea necesario
+`;
+
+export { StyledNavbar, Title, Image };

@@ -36,6 +36,13 @@ module.exports = (_, argv) => ({
           loader: "babel-loader",
         },
       },
+      {
+        test: /\.(jpe?g|png|gif|woff|woff2|eot|ttf|svg)(\?[a-z0-9=.]+)?$/,
+        loader: 'url-loader',
+        options: {
+          limit: 100000,
+        }
+      }
     ],
   },
 

@@ -1,19 +1,10 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { StyledFooter } from "./Footer.styles";
 
 const Footer = () => {
-  return (
-    <StyledFooter>
-      Hecho con{" "}
-      <span role="img" aria-label="heart">
-        ❤️
-      </span>{" "}
-      desde{" "}
-      <span role="img" aria-label="flag">
-        🇦🇷
-      </span>{" "}
-    </StyledFooter>
-  );
+  const { t, i18n } = useTranslation();
+  return <StyledFooter>{t("footer")}</StyledFooter>;
 };
 
 export default Footer;
